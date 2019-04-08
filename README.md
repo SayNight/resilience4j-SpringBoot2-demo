@@ -9,7 +9,8 @@ BackendAOPController > AopBusinessService > AopConnector
 
 NOAOP(without Spring AOP)：
 BackendNoAOPController > NoAopBusinessService > NoAopConnector
-###event
+分为使用Spring aop和不使用aop两种方式，看demo中对应代码即可
+### event
 pull task
 ```
 @Bean(name = CRConstants.CIRCUITBREAKERAOP)
@@ -41,3 +42,27 @@ public void init() {
 }
 ```
 两种区别在于：pull task需要应用主动拉取事件并进行消费，push task是CircuitBreaker触发事件是主动push并立刻消费
+
+推荐采用官网yml配置方式(Spring AOP), 配置简单，上手快，维护成本低：
+···
+resilience4j.circuitbreaker:
+    backends:
+        backendA:
+            registerHealthIndicator: true
+            ringBufferSizeInClosedState: 5
+            ringBufferSizeInHalfOpenState: 3
+            waitInterval: 5000
+            failureRateThreshold: 50
+            eventConsumerBufferSize: 10
+            ignoreExceptions:
+                - io.github.robwin.exception.BusinessException
+        backendB:
+            registerHealthIndicator: true
+            ringBufferSizeInClosedState: 10
+            ringBufferSizeInHalfOpenState: 5
+            waitInterval: 5000
+            failureRateThreshold: 50
+            eventConsumerBufferSize: 10
+            recordFailurePredicate: io.github.robwin.exception.RecordFailurePredicate
+···
+暂时研究yml配置除了registerHealthIndicator（健康检查），其它配置均可通过circuitBreakerConfig自定义编码配置
