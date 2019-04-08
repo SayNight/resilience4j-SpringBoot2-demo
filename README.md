@@ -3,11 +3,11 @@
     Spring Boot2 version : 2.1.3.RELEASE
 
 ## circuitBreaker demo
-    Spring AOP:\<br>
-BackendAOPController > AopBusinessService > AopConnector
+Spring AOP:
+    BackendAOPController > AopBusinessService > AopConnector
 
-    NOAOP(without Spring AOP)：\<br>
-BackendNoAOPController > NoAopBusinessService > NoAopConnector\<br>
+NOAOP(without Spring AOP)：
+    BackendNoAOPController > NoAopBusinessService > NoAopConnector
 分为使用Spring aop和不使用aop两种方式，看demo中对应代码即可
 ### event
 `pull task`
