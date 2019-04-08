@@ -5,10 +5,12 @@ import java.util.function.Supplier;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.saynight.circuitbreaker.CircuitBreakerFactory;
 import com.saynight.circuitbreaker.constants.CRConstants;
+import com.saynight.circuitbreaker.event.CircuitBreakerEventsProcessor;
 import com.saynight.common.exception.BusinessException;
 import com.saynight.web.circuitBreaker.connector.Connector;
 import com.saynight.web.circuitBreaker.service.BusinessService;
@@ -26,10 +28,16 @@ public class NoAopBusinessService implements BusinessService {
 	private CircuitBreaker circuitBreaker;
 	@Resource
 	private CircuitBreakerFactory circuitBreakerFactory;
+	@Autowired
+	private CircuitBreakerEventsProcessor circuitBreakerEventsProcessor;
+	
+	public NoAopBusinessService() {
+	}
 
 	@PostConstruct
 	public void init() {
 		circuitBreaker = circuitBreakerFactory.create(CRConstants.CIRCUITBREAKERNOAOP, 10, 5 * 1000, 5, 10, BusinessException.class);
+		circuitBreaker.getEventPublisher().onEvent(event -> circuitBreakerEventsProcessor.processEvent(event));
 	}
 	public String failure() {
 		return CircuitBreaker.decorateSupplier(circuitBreaker, noAopConnector::failure).get();
