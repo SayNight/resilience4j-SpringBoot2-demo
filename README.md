@@ -8,7 +8,7 @@
 * without Spring AOP<br>
 `BackendNoAOPController > NoAopBusinessService > NoAopConnector`
 <br><br>demo分为使用Spring aop和不使用aop两种方式，看demo中对应代码即可
-### event
+### Consume emitted CircuitBreakerEvents
 `pull task`
 ```
 @Bean(name = CRConstants.CIRCUITBREAKERAOP)
@@ -64,3 +64,17 @@ resilience4j.circuitbreaker:
             recordFailurePredicate: io.github.robwin.exception.RecordFailurePredicate
 ```
 暂时研究yml配置除了registerHealthIndicator（健康检查），其它配置均可通过circuitBreakerConfig自定义编码配置
+### Monitoring
+    The CircuitBreaker provides an interface to monitor the current metrics.
+```
+//这段比较简单，未在demo中体现
+CircuitBreaker.Metrics metrics = circuitBreaker.getMetrics();
+// Returns the current failure rate in percentage.
+float failureRate = metrics.getFailureRate();
+// Returns the current number of buffered calls.
+int bufferedCalls = metrics.getNumberOfBufferedCalls();
+// Returns the current number of failed calls.
+int failedCalls = metrics.getNumberOfFailedCalls();
+// Returns the current number of not permitted calls when the CircuitBreaker is open.
+int failedCalls = metrics.getNumberOfNotPermittedCalls();
+```
