@@ -1,0 +1,22 @@
+spring:
+    application.name: resilience4j-SpringBoot2-demo
+    jackson.serialization.indent_output: true
+
+server:
+    port: 8080
+
+#关闭login check
+management.security.enabled: false
+#开放所有页面节点  默认只开启了health、info两个节点
+management.endpoints.web.exposure.include: '*'
+#显示健康具体信息  默认不会显示详细信息  
+management.endpoint.health.show-details: always
+
+management.endpoints:
+    health.mapping.DOWN: OK
+    health.mapping.OUT_OF_SERVICE : OK
+
+info:
+    name: ${spring.application.name}
+    description: resilience4j SpringBoot2 demo
+    version: 0.0.1
