@@ -65,7 +65,7 @@ resilience4j.circuitbreaker:
 ```
 暂时研究yml配置除了registerHealthIndicator（健康检查），其它配置均可通过circuitBreakerConfig自定义编码配置
 ### Monitoring
-    The CircuitBreaker provides an interface to monitor the current metrics.
+The CircuitBreaker provides an interface to monitor the current metrics.
 ```
 //这段比较简单，未在demo中体现
 CircuitBreaker.Metrics metrics = circuitBreaker.getMetrics();
