@@ -1,18 +1,16 @@
 # resilience4j-SpringBoot2-demo
-resilience4j version : 0.14.1
-
-Spring Boot2 version : 2.1.3.RELEASE
+    resilience4j version : 0.14.1\<br>
+    Spring Boot2 version : 2.1.3.RELEASE
 
 ## circuitBreaker demo
-Spring AOP:
+    Spring AOP:\<br>
 BackendAOPController > AopBusinessService > AopConnector
 
-NOAOP(without Spring AOP)：
-BackendNoAOPController > NoAopBusinessService > NoAopConnector
-
+    NOAOP(without Spring AOP)：\<br>
+BackendNoAOPController > NoAopBusinessService > NoAopConnector\<br>
 分为使用Spring aop和不使用aop两种方式，看demo中对应代码即可
 ### event
-pull task
+`pull task`
 ```
 @Bean(name = CRConstants.CIRCUITBREAKERAOP)
 public CircuitBreaker circuitBreaker() {
@@ -33,7 +31,7 @@ public void init() {
 }
 ```
 
-push task
+`push task`
 
 ```
 @PostConstruct
@@ -42,10 +40,10 @@ public void init() {
     circuitBreaker.getEventPublisher().onEvent(event -> circuitBreakerEventsProcessor.processEvent(event));
 }
 ```
-两种区别在于：pull task需要应用主动拉取事件并进行消费，push task是CircuitBreaker触发事件是主动push并立刻消费
+        两种区别在于：pull task需要应用主动拉取事件并进行消费，push task是CircuitBreaker触发事件是主动push并立刻消费
 
 推荐采用官网yml配置方式(Spring AOP), 配置简单，上手快，维护成本低：
-···
+```
 resilience4j.circuitbreaker:
     backends:
         backendA:
@@ -65,5 +63,5 @@ resilience4j.circuitbreaker:
             failureRateThreshold: 50
             eventConsumerBufferSize: 10
             recordFailurePredicate: io.github.robwin.exception.RecordFailurePredicate
-···
+```
 暂时研究yml配置除了registerHealthIndicator（健康检查），其它配置均可通过circuitBreakerConfig自定义编码配置
