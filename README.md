@@ -3,11 +3,11 @@
     Spring Boot2 version : 2.1.3.RELEASE
 
 ## circuitBreaker demo
-Spring AOP:\<br>  
-BackendAOPController > AopBusinessService > AopConnector
-NOAOP(without Spring AOP)：\<br> 
-    BackendNoAOPController > NoAopBusinessService > NoAopConnector
-        demo分为使用Spring aop和不使用aop两种方式，看demo中对应代码即可
+Spring AOP:
+`BackendAOPController > AopBusinessService > AopConnector`
+NOAOP(without Spring AOP)：
+`BackendNoAOPController > NoAopBusinessService > NoAopConnector`
+    demo分为使用Spring aop和不使用aop两种方式，看demo中对应代码即可
 ### event
 `pull task`
 ```
@@ -39,7 +39,7 @@ public void init() {
     circuitBreaker.getEventPublisher().onEvent(event -> circuitBreakerEventsProcessor.processEvent(event));
 }
 ```
-        两种区别在于：pull task需要应用主动拉取事件并进行消费，push task是CircuitBreaker触发事件是主动push并立刻消费
+        两种区别在于：pull task需要主动拉取事件并进行消费，push task是CircuitBreaker触发事件时主动push并立刻消费
 
 推荐采用官网yml配置方式(Spring AOP), 配置简单，上手快，维护成本低：
 ```
