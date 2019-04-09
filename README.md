@@ -78,3 +78,12 @@ int failedCalls = metrics.getNumberOfFailedCalls();
 // Returns the current number of not permitted calls when the CircuitBreaker is open.
 int failedCalls = metrics.getNumberOfNotPermittedCalls();
 ```
+### actuator url
+```
+http://localhost:8080/actuator  查看所有监控url
+http://localhost:8080/actuator/circuitbreakers  查询所有熔断器
+http://localhost:8080/actuator/circuitbreakerevents 查询最近100（默认）未被消费的熔断事件
+http://localhost:8080/actuator/circuitbreakerevents/{name}    根据熔断器名称查询熔断事件
+http://localhost:8080/actuator/circuitbreakerevents/{name}/{eventType}   根据熔断器名称及事件类型查询熔断事件
+
+```
