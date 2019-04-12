@@ -13,7 +13,7 @@ import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
 
 @Component
 public class CircuitBreakerFactory {
-
+	
 	@Resource
 	private CircuitBreakerRegistry circuitBreakerRegistry;// 在CircuitBreakerConfiguration中已定义 直接引入即可
 
@@ -38,7 +38,7 @@ public class CircuitBreakerFactory {
 	 *            故障率阈值百分比，超过该阈值，CircuitBreaker应该跳闸并开始short-circuiting
 	 *            calls，阈值必须大于0且不大于100
 	 * @param waitDurationInOpenState
-	 *            CircuitBreaker在切换到半开之前应保持打开的等待时间，通俗可理解成熔断开启后，熔断有开启切换到半开的等待时间
+	 *            CircuitBreaker在切换到半开之前应保持打开的等待时间，通俗可理解成熔断开启后，熔断由开启切换到半开的等待时间
 	 * @param ringBufferSizeInHalfOpenState
 	 *            当CircuitBreaker半开时，环形缓冲区的大小， 若设置10，则调用9次失败都不会触发熔断
 	 * @param ringBufferSizeInClosedState
@@ -71,4 +71,5 @@ public class CircuitBreakerFactory {
 
 		return circuitBreakerRegistry.circuitBreaker(circuitBreakerName, circuitBreakerConfig);
 	}
+	
 }
