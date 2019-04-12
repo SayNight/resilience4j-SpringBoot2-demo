@@ -15,7 +15,7 @@ import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
 public class CircuitBreakerFactory {
 	
 	@Resource
-	private CircuitBreakerRegistry circuitBreakerRegistry;// 在CircuitBreakerConfiguration中已定义 直接引入即可
+	private CircuitBreakerRegistry circuitBreakerRegistry;// 在CircuitBreakerConfiguration中已定义直接引入即可
 
 	/**
 	 * 创建默认配置熔断器
