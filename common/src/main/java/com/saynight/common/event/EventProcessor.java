@@ -1,4 +1,4 @@
-package com.saynight.circuitbreaker.event;
+package com.saynight.common.event;
 
 public interface EventProcessor<T> {
 	

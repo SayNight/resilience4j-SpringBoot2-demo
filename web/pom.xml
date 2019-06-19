@@ -47,5 +47,10 @@
 			<artifactId>saynight-circuitbreaker</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+				<dependency>
+			<groupId>com.saynight</groupId>
+			<artifactId>saynight-ratelimiter</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 </project>

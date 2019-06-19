@@ -34,5 +34,6 @@
 		<module>circuitbreaker</module>
 		<module>web</module>
 		<module>common</module>
+		<module>ratelimiter</module>
 	</modules>
 </project>

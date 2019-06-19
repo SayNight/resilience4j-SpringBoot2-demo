@@ -1,5 +1,7 @@
 package com.saynight.circuitbreaker.event;
 
+import com.saynight.common.event.EventProcessor;
+
 import io.github.resilience4j.circuitbreaker.event.CircuitBreakerEvent;
 import io.github.resilience4j.circuitbreaker.event.CircuitBreakerOnCallNotPermittedEvent;
 import io.github.resilience4j.circuitbreaker.event.CircuitBreakerOnErrorEvent;

@@ -29,7 +29,7 @@ public class AopConnector implements Connector {
 	private ScheduledThreadPoolExecutor scheduled =  new ScheduledThreadPoolExecutor(Runtime.getRuntime().availableProcessors());
 	
 	//CircularEventConsumer 该种方式消费event需要去pull task
-//	@PostConstruct  //若注解打开，/actuator/circuitbreakerevents看不到事件，看现象是该监控作用是看近期未被消费的时间
+//	@PostConstruct  //若注解打开，/actuator/circuitbreakerevents看不到事件，看现象是该监控作用是看近期未被消费的事件
 //	public void init() {
 //		scheduled.scheduleAtFixedRate(() -> {
 //			CircularEventConsumer<CircuitBreakerEvent> ringBuffer = new CircularEventConsumer<>(10);

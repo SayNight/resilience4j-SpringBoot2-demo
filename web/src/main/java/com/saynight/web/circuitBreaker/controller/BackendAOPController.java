@@ -1,4 +1,4 @@
-package com.saynight.web.controller;
+package com.saynight.web.circuitBreaker.controller;
 
 import javax.annotation.Resource;
 
