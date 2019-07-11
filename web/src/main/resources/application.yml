@@ -37,3 +37,11 @@ resilience4j.ratelimiter:
             subscribeForEvents: true
             registerHealthIndicator: true
             eventConsumerBufferSize: 10    
+
+resilience4j.bulkhead:
+    backends:
+        backendA:
+            maxConcurrentCall: 1
+        backendB:
+            maxWaitTime: 10
+            maxConcurrentCall: 2

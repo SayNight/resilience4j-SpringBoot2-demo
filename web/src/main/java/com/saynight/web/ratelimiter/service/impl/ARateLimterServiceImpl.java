@@ -36,20 +36,20 @@ public class ARateLimterServiceImpl implements RateLimterService{
 	public void init() {
 		log.info("ARateLimterServiceImpl init start!!!!!!!!!!");
 
-		scheduled.scheduleAtFixedRate(() -> {
-			try {
-				CircularEventConsumer<RateLimiterEvent> ringBuffer = eventConsumerRegistry.getEventConsumer("backendA");
-				if(ringBuffer != null) {
-					List<RateLimiterEvent> bufferedEvents = (List<RateLimiterEvent>) ringBuffer.getBufferedEvents();
-					bufferedEvents.forEach(event -> rateLimiterEventsProcessor.processEvent(event));
-				}else {
-					log.warn("ratelimiter backendA no eventconsumer");
-
-				}
-			} catch (Exception e) {
-				log.error("error", e);
-			}
-		}, 1000, 60000, TimeUnit.MILLISECONDS); 
+//		scheduled.scheduleAtFixedRate(() -> {
+//			try {
+//				CircularEventConsumer<RateLimiterEvent> ringBuffer = eventConsumerRegistry.getEventConsumer("backendA");
+//				if(ringBuffer != null) {
+//					List<RateLimiterEvent> bufferedEvents = (List<RateLimiterEvent>) ringBuffer.getBufferedEvents();
+//					bufferedEvents.forEach(event -> rateLimiterEventsProcessor.processEvent(event));
+//				}else {
+//					log.warn("ratelimiter backendA no eventconsumer");
+//
+//				}
+//			} catch (Exception e) {
+//				log.error("error", e);
+//			}
+//		}, 1000, 60000, TimeUnit.MILLISECONDS); 
 		log.info("ARateLimterServiceImpl init end!!!!!!!!!!");
 	}
 	

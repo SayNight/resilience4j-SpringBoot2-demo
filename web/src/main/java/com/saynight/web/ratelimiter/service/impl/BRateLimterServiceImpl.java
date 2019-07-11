@@ -35,11 +35,11 @@ public class BRateLimterServiceImpl implements RateLimterService{
 	@PostConstruct  //若注解打开，/actuator/ratelimiterevents看不到事件，看现象是该监控作用是看近期未被消费的事件
 	public void init() {
 		log.info("BRateLimterServiceImpl init start!!!!!!!!!!");
-		scheduled.scheduleAtFixedRate(() -> {
-			CircularEventConsumer<RateLimiterEvent> ringBuffer = eventConsumerRegistry.getEventConsumer("backendB");
-			List<RateLimiterEvent> bufferedEvents = (List<RateLimiterEvent>) ringBuffer.getBufferedEvents();
-			bufferedEvents.forEach(event -> rateLimiterEventsProcessor.processEvent(event));
-		}, 1000, 1000, TimeUnit.MILLISECONDS); 
+//		scheduled.scheduleAtFixedRate(() -> {
+//			CircularEventConsumer<RateLimiterEvent> ringBuffer = eventConsumerRegistry.getEventConsumer("backendB");
+//			List<RateLimiterEvent> bufferedEvents = (List<RateLimiterEvent>) ringBuffer.getBufferedEvents();
+//			bufferedEvents.forEach(event -> rateLimiterEventsProcessor.processEvent(event));
+//		}, 1000, 1000, TimeUnit.MILLISECONDS); 
 		log.info("BRateLimterServiceImpl init end!!!!!!!!!!");
 	}
 	
