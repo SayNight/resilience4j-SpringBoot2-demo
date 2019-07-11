@@ -89,4 +89,6 @@ http://localhost:8080/actuator/circuitbreakerevents/{name}/{eventType}   根据�
 ```
 
 # RateLimiter
-看RateLimiterController
+  web module: RateLimiterController
+# Bulkhead
+  web module: BulkheadController
