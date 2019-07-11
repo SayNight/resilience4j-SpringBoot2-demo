@@ -1,3 +1,4 @@
+[toc]
 # resilience4j-SpringBoot2-demo
     resilience4j version : 0.14.1
     Spring Boot2 version : 2.1.3.RELEASE
@@ -85,5 +86,7 @@ http://localhost:8080/actuator/circuitbreakers  查询所有熔断器
 http://localhost:8080/actuator/circuitbreakerevents 查询最近100（默认）未被消费的熔断事件
 http://localhost:8080/actuator/circuitbreakerevents/{name}    根据熔断器名称查询熔断事件
 http://localhost:8080/actuator/circuitbreakerevents/{name}/{eventType}   根据熔断器名称及事件类型查询熔断事件
-
 ```
+
+# RateLimiter
+看RateLimiterController
